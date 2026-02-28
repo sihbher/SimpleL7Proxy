@@ -235,42 +235,9 @@ En términos simples: que el tráfico entre tu aplicación y el modelo de AI **n
 
 #### Arquitectura de Red Privada Típica (Enterprise)
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                        VNET Corporativa                              │
-│                                                                      │
-│  ┌──────────────┐    ┌──────────────┐    ┌────────────────────────┐  │
-│  │ App Gateway  │    │ APIM         │    │ SimpleL7Proxy          │  │
-│  │ (WAF + SSL)  │───▶│ (VNET Inject)│───▶│ (ACA Internal-only)   │  │
-│  │              │    │ Private EP   │    │ Private EP             │  │
-│  └──────┬───────┘    └──────────────┘    └──────────┬─────────────┘  │
-│         │                                            │               │
-│         │         Subnet: AI Services                │               │
-│         │    ┌──────────────────────────────────────┐│               │
-│         │    │ ┌──────────┐  ┌──────────┐          ││               │
-│         │    │ │ OpenAI   │  │ AI       │          ││               │
-│         │    │ │ Private  │  │ Foundry  │   ◄──────┘│               │
-│         │    │ │ Endpoint │  │ Priv EP  │           │               │
-│         │    │ └──────────┘  └──────────┘           │               │
-│         │    └──────────────────────────────────────┘│               │
-│         │                                            │               │
-│         │         Subnet: Datos                      │               │
-│         │    ┌──────────────────────────────────────┐│               │
-│         │    │ ┌──────────┐  ┌──────────┐          ││               │
-│         │    │ │ Cosmos DB│  │ Service  │          ││               │
-│         │    │ │ Priv EP  │  │ Bus PE   │   ◄──────┘│               │
-│         │    │ └──────────┘  └──────────┘           │               │
-│         │    └──────────────────────────────────────┘│               │
-│         │                                            │               │
-└─────────┼────────────────────────────────────────────┼───────────────┘
-          │                                            │
-          │  ExpressRoute / VPN                        │
-          ▼                                            │
-┌──────────────────┐                                   │
-│ Red On-Premises  │◀──────────────────────────────────┘
-│ (Data Center)    │       (para async: Service Bus, Blob)
-└──────────────────┘
-```
+> 📊 **Diagrama interactivo**: [Arquitectura de Red Privada Enterprise](diagramas/01-red-privada-enterprise.drawio)
+
+<!-- Abrir con Draw.io Desktop o la extensión Draw.io de VS Code -->
 
 #### Consideraciones Clave de Red
 
@@ -313,56 +280,9 @@ Este es un punto que muchos análisis omiten, pero que en la realidad de tus cli
 
 #### Escenario Real: Agentes Distribuidos entre Nubes
 
-```
-┌───────────────────────────────────────────────────────────────────────┐
-│                        AZURE (Hub Central)                             │
-│                                                                        │
-│  ┌──────────────────────────────────────────────────────────────────┐  │
-│  │ APIM (Control Plane + Cloud Gateway)                             │  │
-│  │  • Registro centralizado de agentes y MCP servers                │  │
-│  │  • Políticas de seguridad, tokens, content safety                │  │
-│  │  • Observabilidad unificada (App Insights)                       │  │
-│  └──────┬──────────────┬──────────────┬────────────────────────────┘  │
-│         │              │              │                                │
-│         ▼              │              │                                │
-│  ┌──────────────┐      │              │                                │
-│  │ SimpleL7Proxy│      │              │                                │
-│  │ (Priorización│      │              │                                │
-│  │  + Async)    │      │              │                                │
-│  └──────┬───────┘      │              │                                │
-│         │              │              │                                │
-│         ▼              │              │                                │
-│  ┌──────────────┐      │              │                                │
-│  │ Azure OpenAI │      │              │                                │
-│  │ (East US +   │      │              │                                │
-│  │  West EU)    │      │              │                                │
-│  └──────────────┘      │              │                                │
-└────────────────────────┼──────────────┼────────────────────────────────┘
-                         │              │
-        VPN / ExpressRoute│              │ Internet (HTTPS)
-                         │              │
-┌────────────────────────┼──────────────┼────────────────────────────────┐
-│   ON-PREMISES          │              │          AWS                    │
-│                        ▼              ▼                                 │
-│  ┌──────────────────┐    ┌──────────────────────────┐                  │
-│  │ APIM Self-Hosted │    │ APIM Self-Hosted Gateway │                  │
-│  │ Gateway (K8s)    │    │ (EKS)                    │                  │
-│  └──────┬───────────┘    └──────┬───────────────────┘                  │
-│         │                       │                                      │
-│         ▼                       ▼                                      │
-│  ┌──────────────┐    ┌──────────────────┐                              │
-│  │ MCP Server   │    │ MCP Server       │                              │
-│  │ (SAP, ERP,   │    │ (Redshift,       │                              │
-│  │  DB interna) │    │  SageMaker)      │                              │
-│  └──────────────┘    └──────────────────┘                              │
-│                                                                        │
-│  ┌──────────────┐    ┌──────────────────┐                              │
-│  │ Agente       │    │ Agente           │                              │
-│  │ On-Prem      │    │ AWS              │                              │
-│  │ (K8s local)  │    │ (Lambda/ECS)     │                              │
-│  └──────────────┘    └──────────────────┘                              │
-└────────────────────────────────────────────────────────────────────────┘
-```
+> 📊 **Diagrama interactivo**: [Agentes Distribuidos entre Nubes](diagramas/02-agentes-distribuidos-multicloud.drawio)
+
+<!-- Abrir con Draw.io Desktop o la extensión Draw.io de VS Code -->
 
 #### El Self-Hosted Gateway: La Pieza Clave para Híbrido
 
@@ -492,43 +412,9 @@ Aquí es donde tu pregunta como arquitecto se vuelve crítica. Analicemos el esc
 
 Nota: En la realidad empresarial, los agentes y MCPs **no viven solo en Azure**. Un cliente puede tener agentes en Azure, MCPs on-prem conectados a SAP, herramientas en AWS, y modelos en GCP. El gateway debe poder llegar a todos.
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    ORQUESTADOR DE AGENTES                        │
-│              (Semantic Kernel / AutoGen / LangGraph)              │
-└──────┬────────────────┬────────────────┬────────────────────────┘
-       │                │                │
-       ▼                ▼                ▼
-  ┌─────────┐     ┌─────────┐     ┌─────────┐
-  │ Agente  │     │ Agente  │     │ Agente  │
-  │ Chat    │     │ Análisis│     │ Código  │
-  │ (Azure) │     │ (On-Prem)│    │ (AWS)   │
-  └────┬────┘     └────┬────┘     └────┬────┘
-       │               │               │
-       ▼               ▼               ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    AI GATEWAY (¿Cuál?)                            │
-│                                                                   │
-│  ● Descubrimiento de herramientas (MCP)                          │
-│  ● Seguridad y autenticación (cross-cloud)                       │
-│  ● Rate limiting por agente/usuario                               │
-│  ● Observabilidad de tokens                                       │
-│  ● Priorización de solicitudes                                    │
-│  ● Resiliencia y failover                                         │
-│  ● CONECTIVIDAD PRIVADA (Private Endpoints, VPN, ExpressRoute)   │
-│  ● ALCANCE MULTI-CLOUD (Self-hosted gateways)                    │
-└──────┬──────────┬──────────┬──────────┬─────────────────────────┘
-       │          │          │          │
-       ▼          ▼          ▼          ▼
-  ┌─────────┐ ┌────────┐ ┌────────┐ ┌──────────────┐
-  │ MCP     │ │ Azure  │ │ MCP    │ │ Modelos /    │
-  │ Servers │ │ OpenAI │ │ Server │ │ APIs en      │
-  │ (Azure) │ │ Models │ │(On-Prem│ │ AWS / GCP    │
-  │         │ │        │ │  SAP)  │ │              │
-  └─────────┘ └────────┘ └────────┘ └──────────────┘
-    Private      Private    VPN/       HTTPS /
-    Endpoint     Endpoint   ExpressRoute Self-hosted GW
-```
+> 📊 **Diagrama interactivo**: [Arquitectura Multi-Agente con MCP](diagramas/03-arquitectura-multiagente-mcp.drawio)
+
+<!-- Abrir con Draw.io Desktop o la extensión Draw.io de VS Code -->
 
 ### ¿Cuál Solución Cubre Mejor Este Escenario?
 
@@ -633,15 +519,9 @@ Sin embargo, SimpleL7Proxy sigue siendo **insustituible** para escenarios que AP
 
 ### Arquitectura 1: APIM Solo (Para la mayoría de los clientes nuevos)
 
-```
-Agentes/Apps → APIM (AI Gateway) → Azure OpenAI / Foundry
-                  │
-                  ├─ MCP Servers (herramientas)
-                  ├─ A2A Agents (inter-agente)
-                  ├─ Content Safety
-                  ├─ Semantic Caching (Redis)
-                  └─ Token Metrics (App Insights)
-```
+> 📊 **Diagrama interactivo**: [Arquitectura 1 — APIM Solo](diagramas/04-arq1-apim-solo.drawio)
+
+<!-- Abrir con Draw.io Desktop o la extensión Draw.io de VS Code -->
 
 **Cuándo usarla**: Clientes que empiezan con AI, no tienen workloads mixtos extremos, quieren la menor complejidad operativa posible.
 
@@ -652,29 +532,9 @@ Agentes/Apps → APIM (AI Gateway) → Azure OpenAI / Foundry
 
 ### Arquitectura 2: APIM + SimpleL7Proxy (Para clientes con workloads complejos)
 
-```
-                  Todo dentro de VNET Corporativa
-┌─────────────────────────────────────────────────────────────┐
-│                                                              │
-│  Agentes/Apps → APIM (AI Gateway,     → SimpleL7Proxy      │
-│  (Private EP)   VNET Injection,         (ACA Internal-only) │
-│                 Premium v2)                    │             │
-│                    │                           │             │
-│                    ├─ MCP Servers (PE)    ┌────┘             │
-│                    ├─ A2A Agents          ▼                  │
-│                    ├─ Content Safety   Azure OpenAI (PE)     │
-│                    ├─ Token Metrics    Service Bus (PE)      │
-│                    └─ Rate Limiting    Blob Storage (PE)     │
-│                                                              │
-└──────────────────────────────────────────────────────────────┘
-         │ ExpressRoute / VPN
-         ▼
-┌──────────────────────┐
-│ On-Premises           │
-│ Self-hosted GW (K8s) │
-│ MCP Servers locales  │
-└──────────────────────┘
-```
+> 📊 **Diagrama interactivo**: [Arquitectura 2 — APIM + SimpleL7Proxy](diagramas/05-arq2-apim-simplel7proxy.drawio)
+
+<!-- Abrir con Draw.io Desktop o la extensión Draw.io de VS Code -->
 
 **Cuándo usarla**: Clientes con workloads mixtos (chat + batch), necesidad de priorización real, operaciones de más de 4 minutos, **comunicación 100% privada**, y MCPs on-premises.
 
@@ -685,35 +545,9 @@ Agentes/Apps → APIM (AI Gateway) → Azure OpenAI / Foundry
 
 ### Arquitectura 3: Hub Multi-Agente con APIM como Control Plane
 
-```
-┌──────────────────────────────────────────────┐
-│           Microsoft Foundry                   │
-│  ┌──────────┐ ┌──────────┐ ┌──────────────┐  │
-│  │ Modelos  │ │ Agentes  │ │ Herramientas │  │
-│  │ (GPT-4o) │ │ (Custom) │ │ (MCP Tools)  │  │
-│  └────┬─────┘ └────┬─────┘ └──────┬───────┘  │
-└───────┼─────────────┼──────────────┼──────────┘
-        │             │              │
-        ▼             ▼              ▼
-┌──────────────────────────────────────────────┐
-│      APIM (AI Gateway en Foundry)             │
-│                                               │
-│  Gobernanza centralizada:                     │
-│  • Token quotas por modelo/agente/equipo      │
-│  • Content Safety en todos los prompts        │
-│  • Registro y descubrimiento MCP              │
-│  • Telemetría OpenTelemetry unificada         │
-│  • Políticas de seguridad (Entra ID, RBAC)    │
-│                                               │
-│  Para workloads que lo necesiten:             │
-│  ┌─────────────────────────────────────────┐  │
-│  │ SimpleL7Proxy (Backend Pool)            │  │
-│  │  • Priorización preemptiva              │  │
-│  │  • Async processing (horas)             │  │
-│  │  • Fair queuing                         │  │
-│  └─────────────────────────────────────────┘  │
-└──────────────────────────────────────────────┘
-```
+> 📊 **Diagrama interactivo**: [Arquitectura 3 — Hub Multi-Agente con APIM como Control Plane](diagramas/06-arq3-hub-multiagente.drawio)
+
+<!-- Abrir con Draw.io Desktop o la extensión Draw.io de VS Code -->
 
 **Cuándo usarla**: La arquitectura más completa. Clientes enterprise que quieren el control plane de Foundry + la gobernanza de APIM + la priorización de SimpleL7Proxy.
 
@@ -724,43 +558,9 @@ Agentes/Apps → APIM (AI Gateway) → Azure OpenAI / Foundry
 
 ### Arquitectura 4: Multi-Cloud Híbrido con Gateways Distribuidos
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        AZURE (Hub Central)                       │
-│                                                                   │
-│  ┌─────────────────────────────────────────────────────────────┐  │
-│  │ APIM Cloud Gateway (Premium v2, VNET Injection)             │  │
-│  │  • Control Plane central (config, políticas, API Center)    │  │
-│  │  • MCP Registry (descubrimiento de herramientas)            │  │
-│  │  • Content Safety, Token Metrics, Rate Limiting             │  │
-│  └──────┬───────────────┬──────────────────────────────────────┘  │
-│         │               │                                         │
-│         ▼               ▼                                         │
-│  ┌──────────────┐ ┌────────────────┐                              │
-│  │ SimpleL7Proxy│ │ Azure OpenAI   │                              │
-│  │ (ACA,        │ │ (Private EP,   │                              │
-│  │  Internal)   │ │  multi-región) │                              │
-│  └──────────────┘ └────────────────┘                              │
-└─────────┬─────────────────────┬───────────────────────────────────┘
-          │ ExpressRoute        │ VPN Site-to-Site
-          ▼                     ▼
-┌─────────────────────┐ ┌─────────────────────────┐
-│ ON-PREMISES          │ │ AWS                      │
-│                      │ │                          │
-│ ┌──────────────────┐ │ │ ┌──────────────────────┐ │
-│ │ APIM Self-hosted │ │ │ │ APIM Self-hosted     │ │
-│ │ Gateway (K8s)    │ │ │ │ Gateway (EKS)        │ │
-│ │ Mismas políticas │ │ │ │ Mismas políticas     │ │
-│ └────────┬─────────┘ │ │ └────────┬─────────────┘ │
-│          │           │ │          │               │
-│          ▼           │ │          ▼               │
-│ ┌──────────────────┐ │ │ ┌──────────────────────┐ │
-│ │ MCP: SAP, ERP    │ │ │ │ MCP: Redshift,       │ │
-│ │ MCP: DB Oracle   │ │ │ │ SageMaker endpoints  │ │
-│ │ Agente local     │ │ │ │ Agente AWS           │ │
-│ └──────────────────┘ │ │ └──────────────────────┘ │
-└──────────────────────┘ └──────────────────────────┘
-```
+> 📊 **Diagrama interactivo**: [Arquitectura 4 — Multi-Cloud Híbrido con Gateways Distribuidos](diagramas/07-arq4-multicloud-hibrido.drawio)
+
+<!-- Abrir con Draw.io Desktop o la extensión Draw.io de VS Code -->
 
 **Cuándo usarla**: Clientes con infraestructura distribuida entre Azure, on-premises, y otras nubes. MCPs y agentes en múltiples ubicaciones que necesitan gobernanza unificada.
 
