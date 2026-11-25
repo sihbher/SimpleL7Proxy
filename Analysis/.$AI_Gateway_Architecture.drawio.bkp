@@ -1,0 +1,405 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.5.2 Chrome/142.0.7444.265 Electron/39.6.1 Safari/537.36" version="29.5.2">
+  <diagram id="v2" name="AI Gateway Architecture">
+    <mxGraphModel dx="1520" dy="886" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="4400" pageHeight="3200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c1" parent="1" style="text;html=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;labelBackgroundColor=none;" value="&lt;b style=&quot;font-size:20px;color:#0078D4;&quot;&gt;AI Gateway Architecture — APIM + SimpleL7Proxy&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:12px;color:#666;&quot;&gt;All Connectivity Scenarios: Clients → Agents | Agent ↔ Agent (A2A) | Agents → MCP Servers | Multi-Cloud &amp;amp; On-Premises&lt;/span&gt;" vertex="1">
+          <mxGeometry height="55" width="1300" x="350" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;strokeWidth=2;verticalAlign=top;align=center;spacingTop=5;fontSize=14;fontStyle=1;fontColor=#7B1FA2;arcSize=6;container=1;collapsible=0;labelBackgroundColor=none;" value="Clients &amp;amp; Applications" vertex="1">
+          <mxGeometry height="150" width="920" x="250" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="c2" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/general/Browser.svg;labelBackgroundColor=none;" value="Web App" vertex="1">
+          <mxGeometry height="48" width="48" x="30" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="c2" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/additional/Mobile.svg;labelBackgroundColor=none;" value="Mobile App" vertex="1">
+          <mxGeometry height="48" width="40" x="140" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" parent="c2" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/compute/Virtual_Machine.svg;labelBackgroundColor=none;" value="Batch Service" vertex="1">
+          <mxGeometry height="48" width="48" x="240" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c6" parent="c2" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/ai_machine_learning/Bot_Services.svg;labelBackgroundColor=none;" value="Orchestrator&#xa;(Semantic Kernel&#xa;AutoGen)" vertex="1">
+          <mxGeometry height="52" width="52" x="380" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="c7" parent="c2" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/ai_machine_learning/Bot_Services.svg;labelBackgroundColor=none;" value="Copilot&#xa;Studio" vertex="1">
+          <mxGeometry height="48" width="48" x="530" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c8" parent="c2" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/general/Browser.svg;labelBackgroundColor=none;" value="3rd Party&#xa;Consumer" vertex="1">
+          <mxGeometry height="48" width="48" x="680" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c9" parent="c2" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/ai_machine_learning/Bot_Services.svg;labelBackgroundColor=none;" value="External&#xa;Agent" vertex="1">
+          <mxGeometry height="48" width="48" x="820" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6F2FF;strokeColor=#0078D4;strokeWidth=2;verticalAlign=top;align=left;spacingTop=5;spacingLeft=55;fontSize=14;fontStyle=1;fontColor=#0078D4;arcSize=6;container=1;collapsible=0;labelBackgroundColor=none;" value="   Resource Group — AI Platform" vertex="1">
+          <mxGeometry height="1050" width="2100" x="30" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="c11" parent="c10" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/general/Resource_Groups.svg;labelBackgroundColor=none;" value="" vertex="1">
+          <mxGeometry height="38" width="38" x="5" y="5" as="geometry" />
+        </mxCell>
+        <mxCell id="c12" parent="c10" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/identity/Azure_Active_Directory.svg;labelBackgroundColor=none;" value="Microsoft&#xa;Entra ID" vertex="1">
+          <mxGeometry height="48" width="48" x="15" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c13" parent="c10" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/security/Key_Vaults.svg;labelBackgroundColor=none;" value="Key Vault" vertex="1">
+          <mxGeometry height="48" width="48" x="15" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="c14" parent="c10" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/integration/API_Center.svg;labelBackgroundColor=none;" value="API Center&#xa;(Agent &amp;amp; MCP&#xa;Registry)" vertex="1">
+          <mxGeometry height="48" width="48" x="15" y="275" as="geometry" />
+        </mxCell>
+        <mxCell id="c15" parent="c10" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/devops/Application_Insights.svg;labelBackgroundColor=none;" value="Application&#xa;Insights" vertex="1">
+          <mxGeometry height="48" width="48" x="15" y="395" as="geometry" />
+        </mxCell>
+        <mxCell id="c16" parent="c10" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/ai_machine_learning/Cognitive_Services.svg;labelBackgroundColor=none;" value="AI Content&#xa;Safety" vertex="1">
+          <mxGeometry height="48" width="48" x="15" y="505" as="geometry" />
+        </mxCell>
+        <mxCell id="c17" parent="c10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FFF0;strokeColor=#008000;strokeWidth=2;dashed=1;dashPattern=8 4;verticalAlign=top;align=left;spacingTop=5;spacingLeft=55;fontSize=13;fontStyle=1;fontColor=#008000;arcSize=5;container=1;collapsible=0;labelBackgroundColor=none;" value="   Virtual Network  (10.0.0.0/16)" vertex="1">
+          <mxGeometry height="970" width="1970" x="100" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c18" parent="c17" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/networking/Virtual_Networks.svg;labelBackgroundColor=none;" value="" vertex="1">
+          <mxGeometry height="38" width="38" x="5" y="5" as="geometry" />
+        </mxCell>
+        <mxCell id="c19" parent="c17" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#AAAAAA;strokeWidth=1;dashed=1;dashPattern=4 4;verticalAlign=top;align=left;spacingTop=3;spacingLeft=8;fontSize=10;fontStyle=2;fontColor=#888888;arcSize=4;container=1;collapsible=0;opacity=50;labelBackgroundColor=none;" value="Subnet: AppGW  10.0.0.0/24" vertex="1">
+          <mxGeometry height="270" width="190" x="20" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c20" parent="c19" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/networking/Application_Gateways.svg;labelBackgroundColor=none;" value="Application&#xa;Gateway&#xa;(WAF+SSL)" vertex="1">
+          <mxGeometry height="55" width="55" x="60" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="c21" parent="c17" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#AAAAAA;strokeWidth=1;dashed=1;dashPattern=4 4;verticalAlign=top;align=left;spacingTop=3;spacingLeft=8;fontSize=10;fontStyle=2;fontColor=#888888;arcSize=4;container=1;collapsible=0;opacity=50;labelBackgroundColor=none;" value="Subnet: APIM  10.0.1.0/24" vertex="1">
+          <mxGeometry height="580" width="660" x="240" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c22" parent="c21" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/integration/API_Management_Services.svg;labelBackgroundColor=none;" value="API Management&#xa;(AI Gateway)&#xa;Premium v2" vertex="1">
+          <mxGeometry height="60" width="60" x="20" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="c23" parent="c21" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/networking/Private_Endpoint.svg;labelBackgroundColor=none;" value="Private&#xa;Endpoint" vertex="1">
+          <mxGeometry height="36" width="36" x="20" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="c24" parent="c21" style="text;html=1;align=left;verticalAlign=top;fontSize=9;fontColor=#333333;fillColor=none;strokeColor=none;labelBackgroundColor=none;" value="&lt;b&gt;AI Gateway Capabilities:&lt;/b&gt;&lt;br&gt;• MCP Server gateway (GA)&lt;br&gt;• A2A Protocol (Preview)&lt;br&gt;• Token Rate Limiting (TPM)&lt;br&gt;• Semantic Caching&lt;br&gt;• Content Safety / Prompt Shield&lt;br&gt;• Load Balancer (RR, Weighted, Priority)&lt;br&gt;• Circuit Breaker (dynamic Retry-After)&lt;br&gt;• Token Emit Metrics&lt;br&gt;• OAuth2 / Managed Identity" vertex="1">
+          <mxGeometry height="175" width="280" x="130" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c25" parent="c21" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/databases/Cache_Redis.svg;labelBackgroundColor=none;" value="Azure Redis&#xa;(Semantic&#xa;Cache)" vertex="1">
+          <mxGeometry height="48" width="48" x="440" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c26" parent="c21" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#4A148C;arcSize=12;shadow=1;labelBackgroundColor=none;" value="MCP Server&#xa;(Cosmos DB Tools)" vertex="1">
+          <mxGeometry height="45" width="130" x="430" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="c27" parent="c21" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#4A148C;arcSize=12;shadow=1;labelBackgroundColor=none;" value="MCP Server&#xa;(Custom REST→MCP)" vertex="1">
+          <mxGeometry height="45" width="130" x="430" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="c28" parent="c21" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/ai_machine_learning/AI_Studio.svg;labelBackgroundColor=none;" value="Microsoft&#xa;Foundry" vertex="1">
+          <mxGeometry height="48" width="48" x="130" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="c29" parent="c21" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/ai_machine_learning/Bot_Services.svg;labelBackgroundColor=none;" value="A2A Agent&#xa;Chat" vertex="1">
+          <mxGeometry height="45" width="45" x="260" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="c30" parent="c21" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/ai_machine_learning/Bot_Services.svg;labelBackgroundColor=none;" value="A2A Agent&#xa;Analyst" vertex="1">
+          <mxGeometry height="45" width="45" x="370" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="c31" parent="c21" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/ai_machine_learning/Bot_Services.svg;labelBackgroundColor=none;" value="A2A Agent&#xa;Coder" vertex="1">
+          <mxGeometry height="45" width="45" x="480" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="c32" parent="c21" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/networking/DNS_Zones.svg;labelBackgroundColor=none;" value="Private&#xa;DNS Zones" vertex="1">
+          <mxGeometry height="40" width="40" x="570" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c33" parent="c21" style="text;html=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;labelBackgroundColor=none;" value="&lt;i style=&quot;color:#9C27B0;font-size:9px;&quot;&gt;← A2A (Agent-to-Agent) →&lt;/i&gt;" vertex="1">
+          <mxGeometry height="20" width="290" x="247.5" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c34" parent="c21" style="text;html=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;labelBackgroundColor=none;" value="&lt;i style=&quot;font-size:9px;color:#888;&quot;&gt;Direct routing for non-priority traffic&lt;/i&gt;" vertex="1">
+          <mxGeometry height="20" width="350" x="30" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="c97" edge="1" parent="c21" source="c22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#26A69A;strokeWidth=1;dashed=1;dashPattern=4 4;fontSize=8;fontColor=#26A69A;labelBackgroundColor=none;opacity=70;" target="c25" value="Cache">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c98" edge="1" parent="c21" source="c22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7B1FA2;strokeWidth=2;dashed=1;dashPattern=8 4;fontSize=9;fontColor=#7B1FA2;labelBackgroundColor=none;opacity=80;" target="c26" value="MCP">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c99" edge="1" parent="c21" source="c22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7B1FA2;strokeWidth=2;dashed=1;dashPattern=8 4;fontSize=9;fontColor=#7B1FA2;labelBackgroundColor=none;opacity=80;" target="c27" value="MCP">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c100" edge="1" parent="c21" source="c29" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#9C27B0;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#9C27B0;labelBackgroundColor=none;exitX=1.056;exitY=0.522;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.033;entryY=0.522;entryDx=0;entryDy=0;entryPerimeter=0;" target="c30" value="A2A">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c101" edge="1" parent="c21" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#9C27B0;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#9C27B0;labelBackgroundColor=none;entryX=-0.056;entryY=0.522;entryDx=0;entryDy=0;entryPerimeter=0;" target="c31" value="A2A">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="420" y="303" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c102" edge="1" parent="c21" source="c22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#888888;strokeWidth=1;dashed=1;dashPattern=4 4;fontSize=8;fontColor=#888888;labelBackgroundColor=none;opacity=70;" target="c28" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c35" parent="c17" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#AAAAAA;strokeWidth=1;dashed=1;dashPattern=4 4;verticalAlign=top;align=left;spacingTop=3;spacingLeft=8;fontSize=10;fontStyle=2;fontColor=#888888;arcSize=4;container=1;collapsible=0;opacity=50;labelBackgroundColor=none;" value="Subnet: ACA  10.0.2.0/23" vertex="1">
+          <mxGeometry height="580" width="380" x="940" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c36" parent="c35" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/compute/Container_Apps.svg;labelBackgroundColor=none;" value="SimpleL7Proxy&#xa;(ACA Internal-Only)" vertex="1">
+          <mxGeometry height="55" width="55" x="20" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="c37" parent="c35" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/networking/Private_Endpoint.svg;labelBackgroundColor=none;" value="Private&#xa;Endpoint" vertex="1">
+          <mxGeometry height="36" width="36" x="20" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="c38" parent="c35" style="text;html=1;align=left;verticalAlign=top;fontSize=9;fontColor=#333333;fillColor=none;strokeColor=none;labelBackgroundColor=none;" value="&lt;b&gt;SimpleL7Proxy Capabilities:&lt;/b&gt;&lt;br&gt;• Preemptive Priority Queue&lt;br&gt;• Dedicated Workers per Priority&lt;br&gt;• Fair Queuing (anti-starvation)&lt;br&gt;• Async Processing (&amp;gt;30 min)&lt;br&gt;• Latency-based Load Balancing&lt;br&gt;• Circuit Breaker&lt;br&gt;• Stream Token Extraction&lt;br&gt;• Dynamic User Profiles&lt;br&gt;• Health Probe Sidecar (:9000)" vertex="1">
+          <mxGeometry height="170" width="240" x="120" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c39" parent="c35" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/compute/Container_Apps.svg;labelBackgroundColor=none;" value="Health Probe&#xa;Sidecar&#xa;:9000" vertex="1">
+          <mxGeometry height="42" width="42" x="300" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="c40" parent="c35" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/integration/Service_Bus.svg;labelBackgroundColor=none;" value="Service Bus&#xa;(Async Queue)" vertex="1">
+          <mxGeometry height="48" width="48" x="30" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="c41" parent="c35" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/storage/Blob_Block.svg;labelBackgroundColor=none;" value="Blob Storage&#xa;(Responses)" vertex="1">
+          <mxGeometry height="48" width="48" x="150" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="c42" parent="c35" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/databases/Azure_Cosmos_DB.svg;labelBackgroundColor=none;" value="Cosmos DB&#xa;(Request Track)" vertex="1">
+          <mxGeometry height="48" width="48" x="270" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="c43" parent="c35" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/compute/Function_Apps.svg;labelBackgroundColor=none;" value="RequestAPI&#xa;(Azure Function)" vertex="1">
+          <mxGeometry height="48" width="48" x="150" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="c103" edge="1" parent="c35" source="c36" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4CAF50;strokeWidth=2;dashed=1;dashPattern=8 4;fontSize=9;fontColor=#4CAF50;labelBackgroundColor=none;opacity=80;" target="c40" value="Async">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c104" edge="1" parent="c35" source="c36" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4CAF50;strokeWidth=2;dashed=1;dashPattern=8 4;fontSize=9;fontColor=#4CAF50;labelBackgroundColor=none;opacity=80;" target="c41" value="Store">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c105" edge="1" parent="c35" source="c36" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4CAF50;strokeWidth=2;dashed=1;dashPattern=8 4;fontSize=9;fontColor=#4CAF50;labelBackgroundColor=none;opacity=80;" target="c42" value="Track">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c106" edge="1" parent="c35" source="c43" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#888888;strokeWidth=1;dashed=1;dashPattern=4 4;fontSize=8;fontColor=#888888;labelBackgroundColor=none;opacity=70;" target="c42" value="Status">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c44" parent="c17" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#AAAAAA;strokeWidth=1;dashed=1;dashPattern=4 4;verticalAlign=top;align=left;spacingTop=3;spacingLeft=8;fontSize=10;fontStyle=2;fontColor=#888888;arcSize=4;container=1;collapsible=0;opacity=50;labelBackgroundColor=none;" value="Subnet: AI Services  10.0.4.0/24" vertex="1">
+          <mxGeometry height="580" width="580" x="1360" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c45" parent="c44" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/networking/Private_Endpoint.svg;labelBackgroundColor=none;" value="Private&#xa;Endpoints" vertex="1">
+          <mxGeometry height="36" width="36" x="15" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="c46" parent="c44" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/ai_machine_learning/Azure_OpenAI.svg;labelBackgroundColor=none;" value="Azure OpenAI&#xa;East US&#xa;(GPT-4o, PTU)" vertex="1">
+          <mxGeometry height="55" width="55" x="30" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c47" parent="c44" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/ai_machine_learning/Azure_OpenAI.svg;labelBackgroundColor=none;" value="Azure OpenAI&#xa;West Europe&#xa;(GPT-4o, PayGo)" vertex="1">
+          <mxGeometry height="55" width="55" x="220" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c48" parent="c44" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/ai_machine_learning/Azure_OpenAI.svg;labelBackgroundColor=none;" value="Azure OpenAI&#xa;Japan East&#xa;(GPT-4 Turbo)" vertex="1">
+          <mxGeometry height="55" width="55" x="410" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c49" parent="c44" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/ai_machine_learning/AI_Studio.svg;labelBackgroundColor=none;" value="Foundry Model&#xa;(Phi-4)" vertex="1">
+          <mxGeometry height="48" width="48" x="60" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="c50" parent="c44" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/ai_machine_learning/AI_Studio.svg;labelBackgroundColor=none;" value="Foundry Model&#xa;(Mistral Large)" vertex="1">
+          <mxGeometry height="48" width="48" x="230" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="c51" parent="c44" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/ai_machine_learning/Azure_OpenAI.svg;labelBackgroundColor=none;" value="Embeddings&#xa;(text-embed-3)" vertex="1">
+          <mxGeometry height="48" width="48" x="410" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="c52" parent="c44" style="text;html=1;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;labelBackgroundColor=none;" value="&lt;span style=&quot;color:#4CAF50;font-size:9px;&quot;&gt;&lt;b&gt;P1: Chat (lowest latency)&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="18" width="140" x="95" y="145" as="geometry" />
+        </mxCell>
+        <mxCell id="c53" parent="c44" style="text;html=1;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;labelBackgroundColor=none;" value="&lt;span style=&quot;color:#FF9800;font-size:9px;&quot;&gt;&lt;b&gt;P2: Analysis&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="18" width="100" x="285" y="145" as="geometry" />
+        </mxCell>
+        <mxCell id="c54" parent="c44" style="text;html=1;align=left;verticalAlign=middle;fillColor=none;strokeColor=none;labelBackgroundColor=none;" value="&lt;span style=&quot;color:#F44336;font-size:9px;&quot;&gt;&lt;b&gt;P3: Batch&lt;/b&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="18" width="80" x="475" y="145" as="geometry" />
+        </mxCell>
+        <mxCell id="c55" parent="c17" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/networking/Virtual_Network_Gateways.svg;labelBackgroundColor=none;" value="VPN /&#xa;ExpressRoute&#xa;Gateway" vertex="1">
+          <mxGeometry height="55" width="55" x="30" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="c56" parent="c17" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/networking/ExpressRoute_Circuits.svg;labelBackgroundColor=none;" value="ExpressRoute&#xa;Circuit" vertex="1">
+          <mxGeometry height="48" width="48" x="130" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="c90" edge="1" parent="c17" source="c20" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0078D4;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#0078D4;labelBackgroundColor=none;" target="c22" value="Private">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c91" edge="1" parent="c17" source="c22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1565C0;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#1565C0;labelBackgroundColor=none;" target="c36" value="Priority &amp;amp;&#xa;Async Workloads">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c92" edge="1" parent="c17" source="c36" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4CAF50;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#4CAF50;labelBackgroundColor=none;" target="c46" value="P1: Chat">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c93" edge="1" parent="c17" source="c36" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF9800;strokeWidth=2;dashed=1;dashPattern=8 4;fontSize=9;fontColor=#FF9800;labelBackgroundColor=none;opacity=80;" target="c47" value="P2: Analysis">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c94" edge="1" parent="c17" source="c36" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#F44336;strokeWidth=2;dashed=1;dashPattern=8 4;fontSize=9;fontColor=#F44336;labelBackgroundColor=none;opacity=80;" target="c48" value="P3: Batch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c95" edge="1" parent="c17" source="c22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#66BB6A;strokeWidth=1;dashed=1;dashPattern=4 4;fontSize=8;fontColor=#66BB6A;labelBackgroundColor=none;opacity=70;" target="c49" value="Direct routing">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c96" edge="1" parent="c17" source="c22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#66BB6A;strokeWidth=1;dashed=1;dashPattern=4 4;fontSize=8;fontColor=#66BB6A;labelBackgroundColor=none;opacity=70;" target="c50" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c107" edge="1" parent="c10" source="c22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF6F00;strokeWidth=1;dashed=1;dashPattern=4 4;fontSize=8;fontColor=#FF6F00;labelBackgroundColor=none;opacity=70;" target="c12" value="Auth">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c108" edge="1" parent="c10" source="c22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF6F00;strokeWidth=1;dashed=1;dashPattern=4 4;fontSize=8;fontColor=#FF6F00;labelBackgroundColor=none;opacity=70;" target="c13" value="Secrets">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c109" edge="1" parent="c10" source="c22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7B1FA2;strokeWidth=1;dashed=1;dashPattern=4 4;fontSize=8;fontColor=#7B1FA2;labelBackgroundColor=none;opacity=70;" target="c14" value="Registry">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c110" edge="1" parent="c10" source="c22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#26A69A;strokeWidth=1;dashed=1;dashPattern=4 4;fontSize=8;fontColor=#26A69A;labelBackgroundColor=none;opacity=70;" target="c15" value="Telemetry">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c111" edge="1" parent="c10" source="c22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#E91E63;strokeWidth=1;dashed=1;dashPattern=4 4;fontSize=8;fontColor=#E91E63;labelBackgroundColor=none;opacity=70;" target="c16" value="Moderate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c112" edge="1" parent="c10" source="c36" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#26A69A;strokeWidth=1;dashed=1;dashPattern=4 4;fontSize=8;fontColor=#26A69A;labelBackgroundColor=none;opacity=70;" target="c15" value="Telemetry">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c57" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#F57F17;strokeWidth=2;verticalAlign=top;align=left;spacingTop=5;spacingLeft=55;fontSize=14;fontStyle=1;fontColor=#F57F17;arcSize=6;container=1;collapsible=0;labelBackgroundColor=none;" value="   On-Premises (Data Center)" vertex="1">
+          <mxGeometry height="420" width="660" x="30" y="1380" as="geometry" />
+        </mxCell>
+        <mxCell id="c58" parent="c57" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/compute/Virtual_Machine.svg;labelBackgroundColor=none;" value="" vertex="1">
+          <mxGeometry height="35" width="35" x="5" y="5" as="geometry" />
+        </mxCell>
+        <mxCell id="c59" parent="c57" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/compute/Kubernetes_Services.svg;labelBackgroundColor=none;" value="Kubernetes&#xa;Cluster" vertex="1">
+          <mxGeometry height="48" width="48" x="30" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="c60" parent="c57" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#1B5E20;arcSize=12;shadow=1;labelBackgroundColor=none;" value="APIM Self-Hosted&#xa;Gateway&#xa;(Same policies as Azure)" vertex="1">
+          <mxGeometry height="65" width="185" x="20" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="c61" parent="c57" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#4A148C;arcSize=12;shadow=1;labelBackgroundColor=none;" value="MCP Server&#xa;(SAP ERP)" vertex="1">
+          <mxGeometry height="42" width="130" x="250" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c62" parent="c57" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#4A148C;arcSize=12;shadow=1;labelBackgroundColor=none;" value="MCP Server&#xa;(Oracle DB)" vertex="1">
+          <mxGeometry height="42" width="130" x="250" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c63" parent="c57" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#4A148C;arcSize=12;shadow=1;labelBackgroundColor=none;" value="MCP Server&#xa;(Legacy SOAP→REST)" vertex="1">
+          <mxGeometry height="42" width="130" x="250" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="c64" parent="c57" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/ai_machine_learning/Bot_Services.svg;labelBackgroundColor=none;" value="Local Agent&#xa;(Data Processor)" vertex="1">
+          <mxGeometry height="48" width="48" x="440" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c65" parent="c57" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/ai_machine_learning/Bot_Services.svg;labelBackgroundColor=none;" value="Local Agent&#xa;(Compliance)" vertex="1">
+          <mxGeometry height="48" width="48" x="440" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="c66" parent="c57" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1565C0;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#0D47A1;arcSize=12;shadow=1;labelBackgroundColor=none;" value="SimpleL7Proxy&#xa;(Docker On-Prem)&#xa;Alt: no APIM" vertex="1">
+          <mxGeometry height="60" width="165" x="250" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="c67" parent="c57" style="text;html=1;align=center;verticalAlign=middle;fillColor=none;strokeColor=none;labelBackgroundColor=none;" value="&lt;i style=&quot;font-size:8px;color:#F57F17;&quot;&gt;Private network — no public internet&lt;/i&gt;" vertex="1">
+          <mxGeometry height="18" width="300" x="130" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c119" edge="1" parent="c57" source="c60" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7B1FA2;strokeWidth=2;dashed=1;dashPattern=8 4;fontSize=9;fontColor=#7B1FA2;labelBackgroundColor=none;opacity=80;" target="c61" value="MCP">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c120" edge="1" parent="c57" source="c60" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7B1FA2;strokeWidth=2;dashed=1;dashPattern=8 4;fontSize=9;fontColor=#7B1FA2;labelBackgroundColor=none;opacity=80;" target="c62" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c121" edge="1" parent="c57" source="c60" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7B1FA2;strokeWidth=2;dashed=1;dashPattern=8 4;fontSize=9;fontColor=#7B1FA2;labelBackgroundColor=none;opacity=80;" target="c63" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c122" edge="1" parent="c57" source="c64" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#9C27B0;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#9C27B0;labelBackgroundColor=none;" target="c60" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c123" edge="1" parent="c57" source="c65" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#9C27B0;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#9C27B0;labelBackgroundColor=none;" target="c60" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c68" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#FF6F00;strokeWidth=2;verticalAlign=top;align=left;spacingTop=5;spacingLeft=55;fontSize=14;fontStyle=1;fontColor=#FF6F00;arcSize=6;container=1;collapsible=0;labelBackgroundColor=none;" value="   Amazon Web Services (AWS)" vertex="1">
+          <mxGeometry height="420" width="620" x="740" y="1380" as="geometry" />
+        </mxCell>
+        <mxCell id="c69" parent="c68" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/general/Globe.svg;labelBackgroundColor=none;" value="" vertex="1">
+          <mxGeometry height="35" width="35" x="5" y="5" as="geometry" />
+        </mxCell>
+        <mxCell id="c70" parent="c68" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/compute/Kubernetes_Services.svg;labelBackgroundColor=none;" value="Amazon EKS" vertex="1">
+          <mxGeometry height="48" width="48" x="30" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="c71" parent="c68" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#1B5E20;arcSize=12;shadow=1;labelBackgroundColor=none;" value="APIM Self-Hosted&#xa;Gateway (EKS)&#xa;(Same policies as Azure)" vertex="1">
+          <mxGeometry height="65" width="185" x="20" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="c72" parent="c68" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#4A148C;arcSize=12;shadow=1;labelBackgroundColor=none;" value="MCP Server&#xa;(Redshift Tools)" vertex="1">
+          <mxGeometry height="42" width="140" x="250" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c73" parent="c68" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#4A148C;arcSize=12;shadow=1;labelBackgroundColor=none;" value="MCP Server&#xa;(SageMaker Endpoints)" vertex="1">
+          <mxGeometry height="42" width="140" x="250" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c74" parent="c68" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/ai_machine_learning/Bot_Services.svg;labelBackgroundColor=none;" value="AWS Agent&#xa;(Bedrock)" vertex="1">
+          <mxGeometry height="48" width="48" x="450" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="c75" parent="c68" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1565C0;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#0D47A1;arcSize=12;shadow=1;labelBackgroundColor=none;" value="SimpleL7Proxy&#xa;(ECS/EKS)&#xa;Alt: performance" vertex="1">
+          <mxGeometry height="60" width="165" x="250" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="c124" edge="1" parent="c68" source="c71" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7B1FA2;strokeWidth=2;dashed=1;dashPattern=8 4;fontSize=9;fontColor=#7B1FA2;labelBackgroundColor=none;opacity=80;" target="c72" value="MCP">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c125" edge="1" parent="c68" source="c71" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7B1FA2;strokeWidth=2;dashed=1;dashPattern=8 4;fontSize=9;fontColor=#7B1FA2;labelBackgroundColor=none;opacity=80;" target="c73" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c126" edge="1" parent="c68" source="c74" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#9C27B0;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#9C27B0;labelBackgroundColor=none;" target="c71" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c76" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;strokeWidth=2;verticalAlign=top;align=left;spacingTop=5;spacingLeft=55;fontSize=14;fontStyle=1;fontColor=#2E7D32;arcSize=6;container=1;collapsible=0;labelBackgroundColor=none;" value="   Google Cloud Platform (GCP)" vertex="1">
+          <mxGeometry height="420" width="620" x="1410" y="1380" as="geometry" />
+        </mxCell>
+        <mxCell id="c77" parent="c76" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/general/Globe.svg;labelBackgroundColor=none;" value="" vertex="1">
+          <mxGeometry height="35" width="35" x="5" y="5" as="geometry" />
+        </mxCell>
+        <mxCell id="c78" parent="c76" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/compute/Kubernetes_Services.svg;labelBackgroundColor=none;" value="Google GKE" vertex="1">
+          <mxGeometry height="48" width="48" x="30" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="c79" parent="c76" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#1B5E20;arcSize=12;shadow=1;labelBackgroundColor=none;" value="APIM Self-Hosted&#xa;Gateway (GKE)&#xa;(Same policies as Azure)" vertex="1">
+          <mxGeometry height="65" width="185" x="20" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="c80" parent="c76" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#4A148C;arcSize=12;shadow=1;labelBackgroundColor=none;" value="MCP Server&#xa;(BigQuery Tools)" vertex="1">
+          <mxGeometry height="42" width="140" x="250" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c81" parent="c76" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#4A148C;arcSize=12;shadow=1;labelBackgroundColor=none;" value="Vertex AI&#xa;(Custom Model)" vertex="1">
+          <mxGeometry height="42" width="140" x="250" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c82" parent="c76" style="aspect=fixed;html=1;perimeter=none;align=center;shadow=0;dashed=0;image;image=img/lib/azure2/ai_machine_learning/Bot_Services.svg;labelBackgroundColor=none;" value="GCP Agent&#xa;(Vertex AI Agent)" vertex="1">
+          <mxGeometry height="48" width="48" x="450" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="c127" edge="1" parent="c76" source="c79" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7B1FA2;strokeWidth=2;dashed=1;dashPattern=8 4;fontSize=9;fontColor=#7B1FA2;labelBackgroundColor=none;opacity=80;" target="c80" value="MCP">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c128" edge="1" parent="c76" source="c79" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7B1FA2;strokeWidth=2;dashed=1;dashPattern=8 4;fontSize=9;fontColor=#7B1FA2;labelBackgroundColor=none;opacity=80;" target="c81" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c129" edge="1" parent="c76" source="c82" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#9C27B0;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#9C27B0;labelBackgroundColor=none;" target="c79" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c83" edge="1" parent="1" source="c3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0078D4;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#0078D4;labelBackgroundColor=none;" target="c20" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c84" edge="1" parent="1" source="c4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0078D4;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#0078D4;labelBackgroundColor=none;" target="c20" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c85" edge="1" parent="1" source="c5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0078D4;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#0078D4;labelBackgroundColor=none;" target="c20" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c86" edge="1" parent="1" source="c6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0078D4;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#0078D4;labelBackgroundColor=none;" target="c20" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c87" edge="1" parent="1" source="c7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0078D4;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#0078D4;labelBackgroundColor=none;" target="c22" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c88" edge="1" parent="1" source="c8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0078D4;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#0078D4;labelBackgroundColor=none;" target="c22" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c89" edge="1" parent="1" source="c9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0078D4;strokeWidth=2;fontSize=9;fontStyle=1;fontColor=#0078D4;labelBackgroundColor=none;" target="c22" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c113" edge="1" parent="1" source="c55" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#F57F17;strokeWidth=3;dashed=1;dashPattern=10 5;fontSize=9;fontStyle=1;fontColor=#F57F17;labelBackgroundColor=none;" target="c59" value="ExpressRoute /&#xa;VPN Site-to-Site">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c114" edge="1" parent="1" source="c55" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#F57F17;strokeWidth=3;dashed=1;dashPattern=10 5;fontSize=9;fontStyle=1;fontColor=#F57F17;labelBackgroundColor=none;" target="c70" value="VPN S2S">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c115" edge="1" parent="1" source="c55" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#F57F17;strokeWidth=3;dashed=1;dashPattern=10 5;fontSize=9;fontStyle=1;fontColor=#F57F17;labelBackgroundColor=none;" target="c78" value="VPN S2S">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c116" edge="1" parent="1" source="c60" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2E7D32;strokeWidth=1;dashed=1;dashPattern=4 4;fontSize=8;fontColor=#2E7D32;labelBackgroundColor=none;opacity=70;" target="c22" value="Config sync&#xa;(outbound)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c117" edge="1" parent="1" source="c71" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2E7D32;strokeWidth=1;dashed=1;dashPattern=4 4;fontSize=8;fontColor=#2E7D32;labelBackgroundColor=none;opacity=70;" target="c22" value="Config sync&#xa;(outbound)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c118" edge="1" parent="1" source="c79" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2E7D32;strokeWidth=1;dashed=1;dashPattern=4 4;fontSize=8;fontColor=#2E7D32;labelBackgroundColor=none;opacity=70;" target="c22" value="Config sync&#xa;(outbound)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c130" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#BDBDBD;strokeWidth=1;verticalAlign=top;align=left;spacingTop=5;spacingLeft=10;container=1;collapsible=0;labelBackgroundColor=none;" value="" vertex="1">
+          <mxGeometry height="100" width="2000" x="30" y="1830" as="geometry" />
+        </mxCell>
+        <mxCell id="c131" parent="c130" style="text;html=1;align=left;verticalAlign=top;fillColor=none;strokeColor=none;fontSize=10;labelBackgroundColor=none;" value="&lt;b style=&quot;font-size:12px;color:#333;&quot;&gt;Legend&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;&quot;&gt;&lt;b style=&quot;color:#0078D4;&quot;&gt;━━&lt;/b&gt; Main HTTP flow &amp;nbsp;&amp;nbsp;&lt;b style=&quot;color:#1565C0;&quot;&gt;━━&lt;/b&gt; Priority/Async flow &amp;nbsp;&amp;nbsp;&lt;b style=&quot;color:#9C27B0;&quot;&gt;━━&lt;/b&gt; A2A (Agent-to-Agent) &amp;nbsp;&amp;nbsp;&lt;b style=&quot;color:#7B1FA2;&quot;&gt;╌╌&lt;/b&gt; MCP connection &amp;nbsp;&amp;nbsp;&lt;b style=&quot;color:#4CAF50;&quot;&gt;╌╌&lt;/b&gt; Data/Telemetry &amp;nbsp;&amp;nbsp;&lt;b style=&quot;color:#F57F17;&quot;&gt;╌╌&lt;/b&gt; VPN/ExpressRoute &amp;nbsp;&amp;nbsp;&lt;b style=&quot;color:#2E7D32;&quot;&gt;╌╌&lt;/b&gt; Config sync (Self-hosted GW)&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;&quot;&gt;🟦 &lt;b&gt;APIM AI Gateway&lt;/b&gt;: MCP, A2A, Token Limiting, Content Safety, Semantic Cache, LB, CB &amp;nbsp;│&amp;nbsp; 🟪 &lt;b&gt;SimpleL7Proxy&lt;/b&gt;: Priority Queue, Fair Queuing, Async &amp;gt;30min, Latency LB &amp;nbsp;│&amp;nbsp; 🟩 &lt;b&gt;Self-hosted GW&lt;/b&gt;: APIM policies in On-Prem / AWS / GCP &amp;nbsp;│&amp;nbsp; 🟨 &lt;b&gt;On-Prem&lt;/b&gt;: Local MCP Servers &amp;nbsp;│&amp;nbsp; 🟧 &lt;b&gt;AWS/GCP&lt;/b&gt;: Cross-cloud MCPs &amp;amp; Agents&lt;/span&gt;" vertex="1">
+          <mxGeometry height="85" width="1970" x="10" y="5" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
